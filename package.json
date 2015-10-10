@@ -1,0 +1,50 @@
+{
+  "name": "postcss-unrgba",
+  "version": "1.0.0",
+  "description": "Convert rgba() values to hex",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "rgba",
+    "alphas",
+    "tranparent",
+    "transparency",
+    "reds",
+    "greens",
+    "blues",
+    "opacity",
+    "ie",
+    "old",
+    "filter",
+    "colors"
+  ],
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathantneal/postcss-unrgba.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonathantneal/postcss-unrgba/issues"
+  },
+  "homepage": "https://github.com/jonathantneal/postcss-unrgba",
+  "dependencies": {
+    "postcss": "^5.0.4",
+    "postcss-value-parser": "^3.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^1.6.0",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.1"
+  },
+  "scripts": {
+    "lint": "eslint . --ignore-path .gitignore",
+    "test-fixtures": "tape test/*.js | tap-spec",
+    "test": "npm run lint && npm run test-fixtures"
+  },
+  "engines": {
+    "iojs": ">=2.0.0",
+    "node": ">=0.12.0"
+  }
+}
