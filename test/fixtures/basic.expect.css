@@ -15,7 +15,7 @@
 }
 
 .background-4 {
-	background: #ff0000;
+	background: #ff0000 none no-repeat;
 }
 
 .background-5 {
@@ -42,7 +42,7 @@
 	border-top-color: #0000ff;
 	border-right-color: #00ff00;
 	border-bottom-color: #ff0000;
-	border-left-color: #ffff00;
+	border-left-color: transparent;
 }
 
 .box-shadow-1 {

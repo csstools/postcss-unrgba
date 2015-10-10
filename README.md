@@ -9,7 +9,8 @@
 
 .hero {
 	background: rgba(153, 221, 153, .8);
-	border: solid 1px rgba(100, 102, 103, .3);
+	border: solid 1px rgba(100, 102, 103, .8);
+	border-right-color: rgba(100, 102, 103, 0);
 }
 
 /* after */
@@ -17,6 +18,7 @@
 .hero {
 	background: #99dd99;
 	border: solid 1px #646667;
+	border-right-color: transparent;
 }
 ```
 

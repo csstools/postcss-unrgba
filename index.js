@@ -20,6 +20,9 @@ module.exports = postcss.plugin('postcss-color-rgba-fallback', function (opts) {
 
 				if (!decl) return;
 
+				var isbg = /^background/i.test(decl.prop);
+				var isbf = isbg && filter;
+
 				var value = parser(decl.value).walk(function (node) {
 					if (node.type === 'function' && node.value === 'rgba') {
 						if (method === 'warn') return result.warn('rgba() detected', { node: decl });
@@ -30,19 +33,25 @@ module.exports = postcss.plugin('postcss-color-rgba-fallback', function (opts) {
 
 						var argb = rgba.slice(-1).concat(rgba.slice(0, -1)).join('');
 
-						node.value = filter && /^background/i.test(decl.prop) ?
-						'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=\'#' + argb + '\',endColorstr=\'#' + argb + '\')' :
-						'#' + rgba.slice(0, 3).join('');
+						var hex  = rgba[3] === '00' ? 'transparent' : '#' + rgba.slice(0, 3).join('');
 
+						var word = isbf ? 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=\'#' + argb + '\',endColorstr=\'#' + argb + '\')' : hex;
+
+						node.value = word;
 						node.type  = 'word';
+
+						if (isbf) {
+							decl.value = parser.stringify(node);
+							node.value = hex;
+						}
 					}
 				}).toString();
 
 				if (method !== 'warn' && value !== decl.value) {
-					if (method === 'clone') decl = decl.cloneBefore({ value: value });
+					if (method === 'clone' || isbf) decl.cloneBefore({ value: value });
 					else decl.value = value;
 
-					if (filter && /^background/.test(decl.prop)) decl.prop = 'filter';
+					if (isbf) decl.prop = 'filter';
 				}
 			});
 		});
