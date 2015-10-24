@@ -2,7 +2,7 @@
 
 <img align="right" width="135" height="95" src="http://postcss.github.io/postcss/logo-leftp.png" title="Philosopher’s stone, logo of PostCSS">
 
-[UnRGBA] changes rgba() values to hex. This can be useful for outputting CSS for old browsers like Internet Explorer 8.
+[UnRGBA] changes `rgba()` values to hex. This can be useful for outputting CSS for older browsers like Internet Explorer 8.
 
 ```css
 /* before */
