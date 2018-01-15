@@ -42,7 +42,7 @@ module.exports = postcss.plugin('postcss-color-rgba-fallback', function (opts) {
 
 						if (isbf) {
 							decl.value = parser.stringify(node);
-							node.value = hex;
+							node.value = 'transparent';
 						}
 					}
 				}).toString();
