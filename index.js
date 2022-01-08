@@ -48,8 +48,8 @@ module.exports = postcss.plugin('postcss-color-rgba-fallback', function (opts) {
 				}).toString();
 
 				if (method !== 'warn' && value !== decl.value) {
-					if (method === 'clone' || isbf) decl.cloneBefore({ value: value });
-					else decl.value = value;
+					if (method === 'clone') decl.cloneBefore({ value: value });
+					else if (!isbf) decl.value = value;
 
 					if (isbf) decl.prop = 'filter';
 				}
